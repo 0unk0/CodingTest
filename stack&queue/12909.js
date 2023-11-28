@@ -1,21 +1,22 @@
 // 올바른 괄호
-// 시간 초과,,,
 
 function solution(s) {
   let answer = true;
-  let stack = [];
+  let count = 0;
 
   for (let i = 0; i < s.length; i++) {
     if (s[i] === "(") {
-      stack.push(s[i]);
+      count++;
     } else {
-      if (stack.pop() !== "(") {
+      if (count <= 0) {
         answer = false;
+      } else {
+        count--;
       }
     }
   }
 
-  if (stack.length > 0) {
+  if (count > 0) {
     answer = false;
   }
 
